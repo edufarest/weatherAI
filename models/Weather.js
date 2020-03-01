@@ -15,16 +15,7 @@ const create = (date = Date.now(), max, min, humidity) => {
 
   let weather = new Weather({date: date, max: max, min: min, humidity: humidity});
 
-  weather.save((err, weather) => {
-
-      if (err) {
-          return console.error(err);
-      }
-
-      return weather;
-
-  })
-
+  return weather.save();
 };
 
 const find = (query) => {

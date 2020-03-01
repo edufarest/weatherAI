@@ -11,7 +11,7 @@ router.post('/', (req, res) => {
   if (req.body) {
 
 
-    const date = req.body.date;
+    const date = new Date(req.body.date * 1000);
     const min = req.body.min;
     const max = req.body.max;
     const humidity = req.body.humidity;
