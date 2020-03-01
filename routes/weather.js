@@ -3,6 +3,27 @@ var router = express.Router();
 
 let weather = require('../models/Weather');
 
+// Create weather entry
+router.post('/', (req, res) => {
+
+  // Validate request
+
+  if (req.body) {
+
+
+    const date = req.body.date;
+    const min = req.body.min;
+    const max = req.body.max;
+    const humidity = req.body.humidity;
+
+
+    weather.create(date, max, min, humidity).then((weather) => {
+      res.json(weather);
+    });
+  }
+
+});
+
 // Get current weather
 router.get('/', (req, res) => {
 
@@ -13,8 +34,8 @@ router.get('/', (req, res) => {
   console.log("Fetching current weather");
 
   // Return weather JSON
-  weather.find().then((weather) => {
-    res.json(weather);
+  weather.find().then((weathers) => {
+    res.json(weathers);
   });
 
 });
